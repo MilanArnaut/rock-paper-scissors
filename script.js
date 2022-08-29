@@ -11,3 +11,18 @@ function getComputerChoice() {
 
     return choice;
 }
+
+function playRound(userSelection, computerSelection) {
+    
+    userSelection = userSelection.toLowerCase();
+
+    if(userSelection == computerSelection) {
+        return "It's a draw!";
+    }
+
+    switch(userSelection) {
+        case 'rock': if (computerSelection == 'paper') {return "You lose!"} else {return "You win!"}; break;
+        case 'paper': if(computerSelection == 'scissors') {return "You lose!"} else {return "You win!"}; break;
+        case 'scissors': if(computerSelection == 'rock') {return "You lose!"} else {return "You win!"}; break;
+    }
+}
