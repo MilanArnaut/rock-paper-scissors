@@ -40,8 +40,7 @@ function game() {
             case 'You win!': userPoints++; break;
             case 'You lose!': computerPoints++;  break;
         }
-        console.log(userSelection);
-        console.log(computerSelection);
+        console.log(state);
         console.log(`User points:${userPoints}, Computer points ${computerPoints}`);
     }
 
