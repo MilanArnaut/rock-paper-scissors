@@ -15,6 +15,7 @@ function getComputerChoice() {
 function playRound(userSelection, computerSelection) {
     
     userSelection = userSelection.toLowerCase();
+    
 
     if(userSelection == computerSelection) {
         return "It's a draw!";
@@ -26,3 +27,26 @@ function playRound(userSelection, computerSelection) {
         case 'scissors': if(computerSelection == 'rock') {return "You lose!"} else {return "You win!"}; break;
     }
 }
+
+function game() {
+
+    var userPoints = 0, computerPoints = 0;
+
+     while(userPoints < 5 && computerPoints < 5){
+        let userSelection = window.prompt('Insert a choice below');
+        let computerSelection = getComputerChoice();
+        let state = playRound(userSelection, computerSelection);
+        switch(state) {
+            case 'You win!': userPoints++; break;
+            case 'You lose!': computerPoints++;  break;
+        }
+        console.log(userSelection);
+        console.log(computerSelection);
+        console.log(`User points:${userPoints}, Computer points ${computerPoints}`);
+    }
+
+    if(userPoints === 5) {console.log("You won! Bravo")} 
+    else if(computerPoints === 5) {console.log("You lost! Better luck next time!")};
+}
+
+game();
