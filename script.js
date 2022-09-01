@@ -28,33 +28,43 @@ function playRound(userSelection, computerSelection) {
     }
 }
 
-function game() {
-
-    var userPoints = 0, computerPoints = 0;
-
-     while(userPoints < 5 && computerPoints < 5){
-        let userSelection = window.prompt('Insert a choice below');
-        let computerSelection = getComputerChoice();
-        let state = playRound(userSelection, computerSelection);
-        switch(state) {
-            case 'You win!': userPoints++; break;
-            case 'You lose!': computerPoints++;  break;
-        }
-        console.log(state);
-        console.log(`User points:${userPoints}, Computer points ${computerPoints}`);
-    }
-
-    if(userPoints === 5) {console.log("You won! Bravo")} 
-    else if(computerPoints === 5) {console.log("You lost! Better luck next time!")};
-}
-
 let buttons = document.querySelectorAll('.buttons-section button');
 let result = document.querySelector('.result-section');
+var userPoints = 0, computerPoints = 0;
+let computerSpan = document.querySelector('#computerPoints');
+let userSpan = document.querySelector('#userPoints');
+let stateDiv = document.querySelector('.state');
 
 buttons.forEach(button => {
     button.addEventListener('click', e => {
         e.preventDefault();
-        let round = playRound(button.value, getComputerChoice());
-        result.innerHTML = `<p>${round}</p>`;
+        game(button.value);     
     })
-})
+});
+
+window.addEventListener('mousemove', e => {
+    e.preventDefault();
+
+    if(userPoints === 5 || computerPoints === 5) {
+        result.innerHTML = `<a href="index.html"><button>Try again?</button></a>`;
+        buttons.forEach(button => {
+            button.disabled = 'true';
+        })
+    }
+});
+
+function game(userChoice) {
+
+    let computerSelection = getComputerChoice();
+    let state = playRound(userChoice, computerSelection);
+    switch(state) {
+        case 'You win!': userPoints++; break;
+        case 'You lose!': computerPoints++;  break;
+    }
+    userSpan.innerHTML = userPoints;
+    computerSpan.innerHTML = computerPoints;
+    stateDiv.innerHTML = state;
+
+    if(userPoints === 5) {result.innerHTML = `<p>"You won! Bravo"</p>`} 
+    else if(computerPoints === 5) {result.innerHTML = '<p>You lost! Better luck next time!</p>'};
+}
