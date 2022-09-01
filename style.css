@@ -59,3 +59,31 @@ footer {
     background-color: black;
     margin-top: auto;
 }
+
+.result-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:15%;
+    color: white;
+    font-size: 24px;
+    padding: 20px;
+}
+
+.result-section a button {
+    padding: 30px;
+    background-color: #1f2833;
+    color: white;
+    border: 1px solid white;
+    font-size: 18px;
+}
+
+.result-section a button:hover {
+    background-color: #efbc75;
+    border-color: #1f2833;
+    color: black;
+}
+
+.result-section a {
+    text-decoration: none;
+}
