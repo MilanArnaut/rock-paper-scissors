@@ -48,3 +48,13 @@ function game() {
     else if(computerPoints === 5) {console.log("You lost! Better luck next time!")};
 }
 
+let buttons = document.querySelectorAll('.buttons-section button');
+let result = document.querySelector('.result-section');
+
+buttons.forEach(button => {
+    button.addEventListener('click', e => {
+        e.preventDefault();
+        let round = playRound(button.value, getComputerChoice());
+        result.innerHTML = `<p>${round}</p>`;
+    })
+})
