@@ -48,4 +48,3 @@ function game() {
     else if(computerPoints === 5) {console.log("You lost! Better luck next time!")};
 }
 
-game();
